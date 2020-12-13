@@ -81,8 +81,10 @@ if(isset($_POST['cheikh_quran'])){
 
 
 		echo '<option data-image="'.plugin_dir_url(__FILE__).'Allah.png" value="?sourate='.trim($name_sourate[1]).'-' . $sourate->nom_id . '"';
+	if(isset($sura)){
+		if($sura == $sourate->nom_id){ echo ' selected="selected">';}			
+	}	
 
-	if($sura == $sourate->nom_id){ echo ' selected="selected">';}	
 
 	else{
 
@@ -106,61 +108,61 @@ if(isset($_POST['cheikh_quran'])){
 
 			<option data-image="<?php echo plugin_dir_url(__FILE__);?>icon_world.png" disabled="disabled" selected="selected"><?php echo get_option('quran_changelangtxt');?></option>				
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/us.png" value="english" <?php if($_GET['lang_quran'] == 'english'):echo 'selected="selected"';endif;?>>English</option>			
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/us.png" value="english" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'english'):echo 'selected="selected"';endif;}?>>English</option>			
 
-			<option  data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/fr.png"  value="francais" <?php if($_GET['lang_quran'] == 'francais'):echo 'selected="selected"';endif;?>>Français</option>
+			<option  data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/fr.png"  value="francais" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'francais'):echo 'selected="selected"';endif;}?>>Français</option>
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/de.png" value="german" <?php if($_GET['lang_quran'] == 'german'):echo 'selected="selected"';endif;?>>German</option>
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/de.png" value="german" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'german'):echo 'selected="selected"';endif;}?>>German</option>
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/nl.png" value="dutch" <?php if($_GET['lang_quran'] == 'dutch'):echo 'selected="selected"';endif;?>>Dutch</option>
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/nl.png" value="dutch" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'dutch'):echo 'selected="selected"';endif;}?>>Dutch</option>
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/ru.png" value="russian" <?php if($_GET['lang_quran'] == 'russian'):echo 'selected="selected"';endif;?>>Russian</option>	
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/ru.png" value="russian" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'russian'):echo 'selected="selected"';endif;}?>>Russian</option>	
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/al.png" value="albanian" <?php if($_GET['lang_quran'] == 'albanian'):echo 'selected="selected"';endif;?>>Albanian</option>
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/al.png" value="albanian" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'albanian'):echo 'selected="selected"';endif;}?>>Albanian</option>
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/az.png" value="azerbaijani" <?php if($_GET['lang_quran'] == 'azerbaijani'):echo 'selected="selected"';endif;?>>Azerbaijani</option>
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/az.png" value="azerbaijani" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'azerbaijani'):echo 'selected="selected"';endif;}?>>Azerbaijani</option>
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/bd.png" value="bengali" <?php if($_GET['lang_quran'] == 'bengali'):echo 'selected="selected"';endif;?>>Bengali</option>			
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/bd.png" value="bengali" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'bengali'):echo 'selected="selected"';endif;}?>>Bengali</option>			
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/bg.png" value="bulgarian" <?php if($_GET['lang_quran'] == 'bulgarian'):echo 'selected="selected"';endif;?>>Bulgarian</option>	
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/bg.png" value="bulgarian" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'bulgarian'):echo 'selected="selected"';endif;}?>>Bulgarian</option>	
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/ba.png" value="bosnian" <?php if($_GET['lang_quran'] == 'bosnian'):echo 'selected="selected"';endif;?>>Bosnian</option>				
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/ba.png" value="bosnian" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'bosnian'):echo 'selected="selected"';endif;}?>>Bosnian</option>				
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/cn.png" value="chinese" <?php if($_GET['lang_quran'] == 'chinese'):echo 'selected="selected"';endif;?>>Chinese</option>
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/cn.png" value="chinese" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'chinese'):echo 'selected="selected"';endif;}?>>Chinese</option>
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/cz.png" value="czech" <?php if($_GET['lang_quran'] == 'czech'):echo 'selected="selected"';endif;?>>Czech</option>
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/cz.png" value="czech" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'czech'):echo 'selected="selected"';endif;}?>>Czech</option>
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/id.png" value="indonesian" <?php if($_GET['lang_quran'] == 'indonesian'):echo 'selected="selected"';endif;?>>Indonesian</option>
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/id.png" value="indonesian" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'indonesian'):echo 'selected="selected"';endif;}?>>Indonesian</option>
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/it.png" value="italian" <?php if($_GET['lang_quran'] == 'italian'):echo 'selected="selected"';endif;?>>Italian</option>
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/it.png" value="italian" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'italian'):echo 'selected="selected"';endif;}?>>Italian</option>
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/iq.png" value="kurdish" <?php if($_GET['lang_quran'] == 'kurdish'):echo 'selected="selected"';endif;?>>Kurdish</option>
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/iq.png" value="kurdish" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'kurdish'):echo 'selected="selected"';endif;}?>>Kurdish</option>
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/my.png" value="malay" <?php if($_GET['lang_quran'] == 'malay'):echo 'selected="selected"';endif;?>>Malay</option>
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/my.png" value="malay" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'malay'):echo 'selected="selected"';endif;}?>>Malay</option>
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/no.png" value="norwegian" <?php if($_GET['lang_quran'] == 'norwegian'):echo 'selected="selected"';endif;?>>Norwegian</option>
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/no.png" value="norwegian" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'norwegian'):echo 'selected="selected"';endif;}?>>Norwegian</option>
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/pt.png" value="portuguese" <?php if($_GET['lang_quran'] == 'portuguese'):echo 'selected="selected"';endif;?>>Portuguese</option>
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/pt.png" value="portuguese" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'portuguese'):echo 'selected="selected"';endif;}?>>Portuguese</option>
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/ro.png" value="romanian" <?php if($_GET['lang_quran'] == 'romanian'):echo 'selected="selected"';endif;?>>Romanian</option>
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/ro.png" value="romanian" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'romanian'):echo 'selected="selected"';endif;}?>>Romanian</option>
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/so.png" value="somali" <?php if($_GET['lang_quran'] == 'somali'):echo 'selected="selected"';endif;?>>Somali</option>
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/so.png" value="somali" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'somali'):echo 'selected="selected"';endif;}?>>Somali</option>
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/es.png" value="spanish" <?php if($_GET['lang_quran'] == 'spanish'):echo 'selected="selected"';endif;?>>Spanish</option>	
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/es.png" value="spanish" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'spanish'):echo 'selected="selected"';endif;}?>>Spanish</option>	
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/se.png" value="swedish" <?php if($_GET['lang_quran'] == 'swedish'):echo 'selected="selected"';endif;?>>Swedish</option>	
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/se.png" value="swedish" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'swedish'):echo 'selected="selected"';endif;}?>>Swedish</option>	
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/tr.png" value="turkish" <?php if($_GET['lang_quran'] == 'turkish'):echo 'selected="selected"';endif;?>>Turkish</option>	
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/tr.png" value="turkish" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'turkish'):echo 'selected="selected"';endif;}?>>Turkish</option>	
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/pk.png" value="urdu" <?php if($_GET['lang_quran'] == 'urdu'):echo 'selected="selected"';endif;?>>Urdu</option>	
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/pk.png" value="urdu" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'urdu'):echo 'selected="selected"';endif;}?>>Urdu</option>	
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/in.png" value="hindi" <?php if($_GET['lang_quran'] == 'hindi'):echo 'selected="selected"';endif;?>>Hindi</option>			
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/in.png" value="hindi" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'hindi'):echo 'selected="selected"';endif;}?>>Hindi</option>			
 			
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/ir.png" value="persian" <?php if($_GET['lang_quran'] == 'persian'):echo 'selected="selected"';endif;?>>Persian</option>			
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/ir.png" value="persian" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'persian'):echo 'selected="selected"';endif;}?>>Persian</option>			
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/th.png" value="thai" <?php if($_GET['lang_quran'] == 'thai'):echo 'selected="selected"';endif;?>>Thai</option>			
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/th.png" value="thai" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'thai'):echo 'selected="selected"';endif;}?>>Thai</option>			
 
-			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/uz.png" value="uzbek" <?php if($_GET['lang_quran'] == 'uzbek'):echo 'selected="selected"';endif;?>>Uzbek</option>			
+			<option data-image="<?php echo plugin_dir_url(__FILE__); ?>images/country/uz.png" value="uzbek" <?php if(isset($_GET['lang_quran'])){if($_GET['lang_quran'] == 'uzbek'):echo 'selected="selected"';endif;}?>>Uzbek</option>			
 	
 
 		</select>
@@ -176,7 +178,7 @@ if(isset($_POST['cheikh_quran'])){
 
 
 
-	if($_GET['sourate'] && $_GET['lang']){
+	if(isset($_GET['sourate']) && isset($_GET['lang'])){
 
 			preg_match("/[0-9]{1,3}$/", $_GET['sourate'], $matches);
 

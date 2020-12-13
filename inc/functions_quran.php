@@ -185,7 +185,9 @@
 		if($lang != NULL){
 
 			$transFile = plugins_url( 'quran/'.$lang.'.txt' , __FILE__ );
-
+			if($lang == 'urdu'  || $lang == 'persian' || $lang == 'kurdish'){
+				echo "<style>.trans{direction:rtl;}</style>";
+			}
 		}
 
 		else{
@@ -350,22 +352,22 @@ $('#select_name_recitator2').change(function(){
 	dataType: 'xml',
     success: function(xmlquran) {
 
-    $(xmlquran).find('title').each(function(){
+    $(xmlquran).find('item').each(function(){
 
 
-    var checksura = $(this).text();
+    var checksura = $(this).find("title").text()
 
     if(checksura == current_sura){
 
-    var urlmp3 = $(this).context.nextElementSibling.textContent;  
+    var urlmp3 = $(this).find("description").text()
     var res = urlmp3.replace(" ", "_");
      //alert(urlmp3);	
     url_mp3_quran = 'https://krimdev.com/'+res+'';
 
     $('#playeraya2').html('<audio id="kb-idaudio2" src="'+url_mp3_quran+'" controls autoplay></audio>');
 
-    $('#playeraya2 audio').load(url_mp3_quran);
-    $('#playeraya2 audio').play();
+    $('#kb-idaudio2').load(url_mp3_quran);
+    $('#kb-idaudio2')[0].play();
 
     }
 

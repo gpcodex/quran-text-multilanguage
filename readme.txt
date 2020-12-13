@@ -4,8 +4,8 @@ Contributors: karim42
 Donate link: http://www.gp-codex.fr
 Tags: muslim, quran, quran multilanguage, coran , coran en texte, quran text, quran translate, islam, muslim, audio verse, quran verse, coran verset, audio verset, full download
 Requires at least: 3.0.1
-Tested up to: 5.1
-Stable tag: 5.1
+Tested up to: 5.6
+Stable tag: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -307,3 +307,15 @@ Update version jquery 2.2.4
 = 2.3.5 =
 
  - fix url for mp3
+ 
+= 2.3.6 =
+
+ - fix some errors for last version wordpress
+
+= 2.3.7 =
+
+ - fix direction text for language urdu
+
+ = 2.3.8 =
+
+ - fix player audio for the latest version of wordpress

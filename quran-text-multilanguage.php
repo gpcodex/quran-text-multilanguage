@@ -6,7 +6,7 @@ Plugin Name: Quran Multilanguage Text Audio Verse
 
 Description: Quran Text Multilanguage translated into 29 languages. Full ajax version and responsive. Fully customizable. More reciter...
 
-Version: 2.3.5
+Version: 2.3.8
 
 Author: Bahmed karim
 
