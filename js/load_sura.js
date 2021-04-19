@@ -29,8 +29,8 @@ jQuery(document).ready(function($){
 /*************************************************CHANGE SURA**********************************************************/
       $('#change_sura').change(function(){
           $.each($('audio'), function () {
-          sound.pause();
-          sound.currentTime = 0;
+          this.pause();
+          this.currentTime = 0;
           });
           var clickBtnValue = $(this).val();
           var paramsLang = getParameterByName('lang'); 
@@ -153,8 +153,8 @@ jQuery(function($) {
     $("body").on("click","#click_params_kb", function(){  
 
         $.each($('audio'), function () {
-            sound.pause();
-            sound.currentTime = 0;
+            this.pause();
+            this.currentTime = 0;
         });
 
         $('.params_kb').css('height', '50px');
@@ -183,8 +183,8 @@ jQuery(function($) {
     $("body").on("click","#click_playsura_kb", function(){
 
       $.each($('audio'), function () {
-         sound.pause();
-        sound.currentTime = 0;
+         this.pause();
+        this.currentTime = 0;
       }); 
       $('.aya').css('display', 'block');
       $('#playeraya2').html(""); 
@@ -204,8 +204,8 @@ jQuery(function($) {
    $("body").on("click","#click_download_kb", function(){
 
       $.each($('audio'), function () {
-          sound.pause();
-          sound.currentTime = 0;
+          this.pause();
+          this.currentTime = 0;
       }); 
       $('.params_download_kb').toggle('fast');
       $('#name_recitator').show();
