@@ -316,14 +316,19 @@ Update version jquery 2.2.4
 
  - fix direction text for language urdu
 
- = 2.3.8 =
+= 2.3.8 =
 
  - fix player audio for the latest version of wordpress
  
-  = 2.3.9 =
+= 2.3.9 =
 
  - Mp3 on cloud
  
-   = 2.3.10 =
+= 2.3.10 =
 
  - Mp3 on cloud
+ 
+= 2.3.11 =
+
+  - fix change sura after loading audio
+ 
