@@ -77,6 +77,14 @@ width:20px !important;
 #recitator_kb {position: absolute;width:27% !important;}
 /*FIN CSS MOBILE */
 }
+<<<<<<< HEAD
+=======
+.kb-speaker{
+	width:15px;
+	position:absolute;
+	right: 8px;
+}
+>>>>>>> d03f86d (update 80%)
 #pause_quran{display:none;position:absolute;margin-left: auto;margin-right: auto;left: 0;right: 0;width: 30px;margin-top: 25px;cursor:pointer;}
 #play_quran{display:none;position:absolute;margin-left: auto;margin-right: auto;left: 0;right: 0;width: 30px;margin-top: 25px;cursor:pointer;}
 
@@ -91,11 +99,36 @@ width:70%;
 }
 
 @font-face {
+<<<<<<< HEAD
     font-family: "textQuran";
     src: url('<?php echo plugin_dir_url(__FILE__); ?>UthmanicHafs1Ver08.otf');
 }
 
 .quran {font-family:textQuran !important;}
+=======
+    font-family: "noorehira";
+    src: url('<?php echo plugin_dir_url(__FILE__); ?>/font/noorehira.ttf');
+}
+@font-face {
+    font-family: "uthmanic";
+    src: url('<?php echo plugin_dir_url(__FILE__); ?>/font/uthmanic.otf');
+}
+@font-face {
+    font-family: "goldenlotus";
+    src: url('<?php echo plugin_dir_url(__FILE__); ?>/font/goldenlotus.ttf');
+}
+@font-face {
+    font-family: "swer_quran";
+    src: url('<?php echo plugin_dir_url(__FILE__); ?>/font/swer_quran.ttf');
+}
+@font-face {
+    font-family: 'quran';
+    src: url('<?php echo plugin_dir_url(__FILE__); ?>/font/quran.woff2') format('woff2');
+    font-display: swap;
+  }
+
+.quran {font-family:<?=get_option('quran_arabicfont');?> !important;word-spacing:<?=get_option('quran_wordspacing');?>px;}
+>>>>>>> d03f86d (update 80%)
 
 <?php echo get_option('quran_custum_css'); ?>
 
@@ -364,7 +397,11 @@ border-radius: 5px;
 	}
 
 
+<<<<<<< HEAD
 	.quranbadge{float: right;margin-left:5px;padding:1px 8px 1px;font-size:20px;font-weight:bold;white-space:nowrap;color:#ffffff;background-color:#999999;-webkit-border-radius:9px;-moz-border-radius:9px;border-radius:9px;}
+=======
+	.quranbadge{font-family: Arial, Helvetica, sans-serif;float: right;margin-left:5px;padding:1px 8px 1px;font-size:20px;font-weight:bold;white-space:nowrap;color:#ffffff;background-color:#999999;-webkit-border-radius:9px;-moz-border-radius:9px;border-radius:9px;}
+>>>>>>> d03f86d (update 80%)
 
 
 

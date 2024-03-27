@@ -60,7 +60,11 @@
 
  */
 
+<<<<<<< HEAD
 
+=======
+/*
+>>>>>>> d03f86d (update 80%)
  jQuery(document).ready(function($){
 
     $.urlParam = function(name){
@@ -78,12 +82,20 @@
 
     var suraName = $.urlParam('sourate');
   
+<<<<<<< HEAD
     var sura  = suraName.match(/\d+/);
+=======
+    var sura  = 1
+>>>>>>> d03f86d (update 80%)
 
     return "<a class='sm2_link' href='https://quran.s3.fr-par.scw.cloud/verset/Soudais/" +sura+ "/"+jQuery(this).html().match(/[0-9]+/)+".mp3'><span class='quranbadge quranbadge-info' id='kv"+jQuery(this).html().match(/[0-9]+/)+"'>  "+jQuery(this).html().match(/[0-9]+/)+" </span></a>";
 
     });
+<<<<<<< HEAD
 });     
+=======
+});    */ 
+>>>>>>> d03f86d (update 80%)
 
 
 (function(window) {
