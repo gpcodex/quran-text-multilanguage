@@ -331,4 +331,48 @@ Update version jquery 2.2.4
 = 2.3.11 =
 
   - fix change sura after loading audio
+
+= 2.3.12 =
+
+ - added the possibility of changing the font for the arabic text in the admin part 
+ - added the possibility to change word spacing in the admin part 
+
+= 2.3.13 =
+
+ - fix quran badge number
+
+= 2.3.14 =
+
+ - add Tamil language
+
+= 2.3.15 =
+
+ - add Amharic language
+
+= 2.3.16 =
+
+ - fix js sura
+
+= 2.3.18 =
  
+ - add icon speaker in number verse
+
+= 2.3.20 =
+ 
+ - add Tajik language
+
+= 2.3.21
+ - fix json error api rest
+
+= 2.3.22 =
+* Security: Critical security fix for XSS vulnerability in sourate parameter
+* IMPORTANT: All users should update immediately
+
+= 2.3.23 =
+ - fix preg_match sourate parameter
+
+= 2.3.24 =
+* Security: Fixed XSS vulnerabilities in admin settings fields
+* Security: Added proper escaping for text input fields using esc_attr()
+
+
