@@ -1,20 +1,12 @@
 ﻿=== Quran multilanguage Text & Audio ===
 
 Contributors: karim42
-<<<<<<< HEAD
-Donate link: http://www.gp-codex.fr
-Tags: muslim, quran, quran multilanguage, coran , coran en texte, quran text, quran translate, islam, muslim, audio verse, quran verse, coran verset, audio verset, full download
-Requires at least: 3.0.1
-Tested up to: 5.6
-Stable tag: 5.6
-=======
 Donate link: https://www.paypal.com/paypalme/gpcodex
 Tags: muslim, quran, quran multilanguage, coran , coran en texte, quran text, quran translate, islam, muslim, audio verse, quran verse, coran verset, audio verset, full download
 Requires at least: 3.0.1
-Tested up to: 6.2.2
+Tested up to: 6.6.1
 
 Stable tag: 6
->>>>>>> d03f86d (update 80%)
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,11 +14,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-<<<<<<< HEAD
-- Quran Text Multilanguage translated into 29 languages. 
-=======
 - Quran Text Multilanguage translated into 30 languages. 
->>>>>>> d03f86d (update 80%)
 - Full ajax version and responsive. 
 - Fully customizable from the admin area. 
 - Multi recitators : 32 cheikhs 
@@ -36,17 +24,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 You just have to write the shortcode [quran] on your new page.
 
-<<<<<<< HEAD
-The plugin uses mp3 files that come from http://www.islamaudio.fr/ and http://krimdev.com.
-These 2 sites are mine
-
-- <a target ="_blank" href="http://gp-codex.fr">demo page</a>
-=======
 The plugin uses mp3 files that come from https://quran.s3.fr-par.scw.cloud
 These site are mine
 
 - <a target ="_blank" href="https://gpcodex.fr">demo page</a>
->>>>>>> d03f86d (update 80%)
 
 
 Languages :
@@ -340,19 +321,12 @@ Update version jquery 2.2.4
 
  - fix player audio for the latest version of wordpress
  
-<<<<<<< HEAD
-  = 2.3.9 =
-=======
 = 2.3.9 =
->>>>>>> d03f86d (update 80%)
 
  - Mp3 on cloud
  
    = 2.3.10 =
 
-<<<<<<< HEAD
- - Mp3 on cloud
-=======
  - Mp3 on cloud
 
 = 2.3.11 =
@@ -387,4 +361,18 @@ Update version jquery 2.2.4
 = 2.3.20 =
  
  - add Tajik language
->>>>>>> d03f86d (update 80%)
+
+= 2.3.21
+ - fix json error api rest
+
+= 2.3.22 =
+* Security: Critical security fix for XSS vulnerability in sourate parameter
+* IMPORTANT: All users should update immediately
+
+= 2.3.23 =
+ - fix preg_match sourate parameter
+
+= 2.3.24 =
+* Security: Fixed XSS vulnerabilities in admin settings fields
+* Security: Added proper escaping for text input fields using esc_attr()
+

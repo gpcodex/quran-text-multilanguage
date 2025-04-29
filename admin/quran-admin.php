@@ -12,28 +12,29 @@ defined( 'ABSPATH' ) or die( 'Salem aleykoum!' );
 	if(isset($_POST['template_quran_update'])){
 
 		if(!wp_verify_nonce($_POST['template_quran_noncename'], 'tplquran')){
-
 			die('token non valide');
-
 		}
 
+		// Vérification du nonce pour les options
+		if(!wp_verify_nonce($_POST['quran_options_nonce'], 'quran_options')){
+			die('token non valide');
+		}
 
 		foreach($_POST['option'] as $name => $val){
-
 			$value = sanitize_text_field($val);
 			
-			if(empty($value)){
-
-				delete_option($name);
-
-			}else{
-
-				update_option($name, $value);
-
+			// Validation supplémentaire pour les champs de couleur
+			if(strpos($name, 'color') !== false || strpos($name, 'background') !== false) {
+				if(!preg_match('/^#[a-f0-9]{6}$/i', $value)) {
+					$value = '#000000'; // Valeur par défaut si invalide
+				}
 			}
-
-
-
+			
+			if(empty($value)){
+				delete_option($name);
+			}else{
+				update_option($name, $value);
+			}
 		}
 
 			?>
@@ -64,8 +65,42 @@ input:checked ~ img  {
 #bloc_admin_quran th{color:#7a7a7a;padding:20px;}
 #bloc_admin_quran tr:nth-child(even) {background: #F8F8F8}
 #bloc_admin_qurantr:nth-child(odd) {background: #FFF}
+.viewfont{font-size:30px;font-weight:400;color:#000000;font-family:<?php echo get_option('quran_arabicfont');?>}
+.wordspacing{word-spacing:<?php echo get_option('quran_wordspacing');?>px;}
+@font-face {
+    font-family: "noorehira";
+    src: url('<?php echo plugin_dir_url(__FILE__); ?>/font/noorehira.ttf');
+}
+@font-face {
+    font-family: "uthmanic";
+    src: url('<?php echo plugin_dir_url(__FILE__); ?>/font/uthmanic.otf');
+}
+@font-face {
+    font-family: "goldenlotus";
+    src: url('<?php echo plugin_dir_url(__FILE__); ?>/font/goldenlotus.ttf');
+}
+@font-face {
+    font-family: "swer_quran";
+    src: url('<?php echo plugin_dir_url(__FILE__); ?>/font/swer_quran.ttf');
+}
+@font-face {
+    font-family: 'quran';
+    src: url('<?php echo plugin_dir_url(__FILE__); ?>/font/quran.woff2') format('woff2');
+    font-display: swap;
+  }
 </style>
+<script>
+	function viewfont(font)
+		{
+			jQuery('.viewfont').css("font-family", font.value);
 
+		}
+		function wordspacing(px)
+		{
+			jQuery('.wordspacing').css("word-spacing", px.value+"px");
+
+		}		
+</script>
 <div class="wrap" id="bloc_admin_quran">
 
 <h3>Quran Text Multilanguage Options</h3>
@@ -73,9 +108,7 @@ input:checked ~ img  {
 
 
 <form method="post" action="">
-
-
-
+<?php wp_nonce_field('quran_options', 'quran_options_nonce'); ?>
 <?php settings_fields( 'quran-options' ); ?>
 
 
@@ -123,13 +156,61 @@ input:checked ~ img  {
 <option value="Al-Hussary" <?php if (get_option('quran_recitator') == "Al-Hussary") {echo 'selected="selected"';} ?>>Al-Hussary</option>
 
 <option value="Al-Ajmy" <?php if (get_option('quran_recitator') == "Al-Ajmy") {echo 'selected="selected"';} ?>>Al-Ajmy</option>
-
+</select>
 </td>
 
 </tr>
 
+<tr valign="top">
 
+<th scope="row" id="thadminquran">Choose font for arabic text</th>
 
+<td>
+
+<select name="option[quran_arabicfont]" id="quran_arabicfont" onchange="viewfont(this);">
+
+<option disabled="disabled">Choose font for arabic text</option>
+
+<option value="noorehira" <?php if (get_option('quran_arabicfont') == "noorehira") {echo 'selected="selected"';} ?>>noorehira Regular</option>
+
+<option value="uthmanic" <?php if (get_option('quran_arabicfont') == "uthmanic") {echo 'selected="selected"';} ?>>Uthmanic Hafs</option>
+
+<option value="goldenlotus" <?php if (get_option('quran_arabicfont') == "goldenlotus") {echo 'selected="selected"';} ?>>Golden Lotus</option>
+
+<option value="swer_quran" <?php if (get_option('quran_arabicfont') == "swer_quran") {echo 'selected="selected"';} ?>>Mcs Swer Al_Quran 2</option>
+
+<option value="quran" <?php if (get_option('quran_arabicfont') == "quran") {echo 'selected="selected"';} ?>>Quran v3</option>
+</select>
+<span class="viewfont">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</span>
+</td>
+
+</tr>
+<tr valign="top">
+
+<th scope="row" id="thadminquran">Word Spacing for arabic text</th>
+
+<td>
+
+<select name="option[quran_wordspacing]" id="quran_wordspacing" onchange="wordspacing(this);">
+
+<option disabled="disabled">Word Spacing for arabic text</option>
+<option value="0" <?php if (get_option('quran_wordspacing') == "0") {echo 'selected="selected"';} ?>>0 px</option>
+<option value="1" <?php if (get_option('quran_wordspacing') == "1") {echo 'selected="selected"';} ?>>1 px</option>
+<option value="2" <?php if (get_option('quran_wordspacing') == "2") {echo 'selected="selected"';} ?>>2 px</option>
+<option value="3" <?php if (get_option('quran_wordspacing') == "3") {echo 'selected="selected"';} ?>>3 px</option>
+<option value="4" <?php if (get_option('quran_wordspacing') == "4") {echo 'selected="selected"';} ?>>4 px</option>
+<option value="5" <?php if (get_option('quran_wordspacing') == "5") {echo 'selected="selected"';} ?>>5 px</option>
+<option value="6" <?php if (get_option('quran_wordspacing') == "6") {echo 'selected="selected"';} ?>>6 px</option>
+<option value="7" <?php if (get_option('quran_wordspacing') == "7") {echo 'selected="selected"';} ?>>7 px</option>
+<option value="8" <?php if (get_option('quran_wordspacing') == "8") {echo 'selected="selected"';} ?>>8 px</option>
+<option value="9" <?php if (get_option('quran_wordspacing') == "9") {echo 'selected="selected"';} ?>>9 px</option>
+<option value="10" <?php if (get_option('quran_wordspacing') == "10") {echo 'selected="selected"';} ?>>10 px</option>
+
+</select>
+<span class="viewfont wordspacing">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</span>
+</td>
+
+</tr>
 <tr valign="top">
 
 
@@ -209,21 +290,21 @@ input:checked ~ img  {
 <tr valign="top">
 <th scope="row" id="thadminquran">Change sura text </th>
 <td>
-   <label><input type="text" name="option[quran_changesuratxt]" value="<?php echo get_option('quran_changesuratxt'); ?>"></label>
+   <label><input type="text" name="option[quran_changesuratxt]" value="<?php echo esc_attr(get_option('quran_changesuratxt')); ?>"></label>
 </td>
 </tr>
 
 <tr valign="top">
 <th scope="row" id="thadminquran">Change language text </th>
 <td>
-   <label><input type="text" name="option[quran_changelangtxt]" value="<?php echo get_option('quran_changelangtxt'); ?>"></label>
+   <label><input type="text" name="option[quran_changelangtxt]" value="<?php echo esc_attr(get_option('quran_changelangtxt')); ?>"></label>
 </td>
 </tr>
 
 <tr valign="top">
 <th scope="row" id="thadminquran">Change recitator text </th>
 <td>
-   <label><input type="text" name="option[quran_changerecitatortxt]" value="<?php echo get_option('quran_changerecitatortxt'); ?>"></label>
+   <label><input type="text" name="option[quran_changerecitatortxt]" value="<?php echo esc_attr(get_option('quran_changerecitatortxt')); ?>"></label>
 </td>
 </tr>
 
@@ -357,8 +438,10 @@ Background : <input name="option[background_quran_arabic]" id="background_quran_
 </table>
 
 <script>
+
 function backDisabled(){
 jQuery(function($) {
+
 if($('#background_disabled').is(':checked')){
 	$('#borderColorQuran').show();
 	$('#displaytemplateQuran').css('background', '#ffffff');

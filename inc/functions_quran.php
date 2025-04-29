@@ -215,7 +215,7 @@ jQuery(function($) {
 
 	$('span.ayaNum, .sm2_link').replaceWith(function(){
 
-		return "<a class='sm2_link' href='<?=$cheikh;?>/<?=$sura;?>/"+jQuery(this).html().match(/[0-9]+/)+".mp3'><span class='quranbadge quranbadge-info' id='kv"+jQuery(this).html().match(/[0-9]+/)+"'>  "+jQuery(this).html().match(/[0-9]+/)+" </span></a>";
+		return "<a class='sm2_link' href='<?=$cheikh;?>/<?=$sura;?>/"+jQuery(this).html().match(/[0-9]+/)+".mp3'><img src='<?=plugin_dir_url(__FILE__);?>/images/speaker.svg' alt='play' class='kb-speaker'><span class='quranbadge quranbadge-info' id='kv"+jQuery(this).html().match(/[0-9]+/)+"'>  "+jQuery(this).html().match(/[0-9]+/)+" </span></a>";
 
 	});	
  });
@@ -452,7 +452,7 @@ $('#select_name_recitatorkb').change(function(){
   		var recitator_quran = $(this).val();
 
   		if(recitator_quran == "Maheralmeaqly"){var nbr_quran = "<?php echo sprintf( "%03d", $sura );?>";}
-  		if(recitator_quran == "ElGhamidi"){var nbr_quran = "<?php echo $_GET['sourate'];?>"}
+  		if(recitator_quran == "ElGhamidi"){ var nbr_quran = "<?php echo esc_js(sanitize_text_field($_GET['sourate'] ?? '')); ?>";}
   		if(recitator_quran == "Soudais"){var nbr_quran = "<?php echo sprintf( "%03d", $sura );?>"}
   		if(recitator_quran == "Abdelbasset"){var nbr_quran = "<?php echo sprintf( "%03d", $sura );?>"}
   		if(recitator_quran == "alafasy"){var nbr_quran = "<?php echo sprintf( "%03d", $sura );?>"}
