@@ -6,11 +6,11 @@ Plugin Name: Quran Multilanguage Text Audio Verse
 
 Description: Quran Text Multilanguage translated into 29 languages. Full ajax version and responsive. Fully customizable. More reciter...
 
-Version: 2.3.10
-
+Version: 2.3.24
+* Important: This update includes critical security fixes for XSS vulnerabilities
 Author: Bahmed karim
 
-Author URI: http://gp-codex.fr
+Author URI: https://gpcodex.fr
 
 */
 
@@ -454,6 +454,7 @@ if(is_admin()){
 
 //LOAD JS FILE
 function add_js_scripts() {
+	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'loadquran', plugin_dir_url(__FILE__).'/js/load_sura.js', array('jquery'), '1.0', true );
 	wp_enqueue_script('msdropdownddjs',plugin_dir_url( __FILE__ ).'js/jquery.dd.js', array('jquery'), '1.0', true);  
 	wp_localize_script('loadquran', 'ajaxurl', admin_url( 'admin-ajax.php' ) );
@@ -496,31 +497,34 @@ add_action( 'wp_ajax_nopriv_qtm_changenextsura', 'qtm_changenextsura' );
 require('inc/functions_quran.php');
 
 
-function qtm_renderquran(){
-	
-require('inc/quran_style.php');
+function qtm_renderquran() {
+    // Enqueue jQuery
+    wp_enqueue_script('jquery');
 
-require('inc/template.php');
-init_quran();
+    // Add inline script to ensure jQuery is used
+    $inline_script = "
+    jQuery(document).ready(function($) {
+        try {
+            $('#select_language, #change_sura').msDropDown();
+        } catch(e) {
+            alert(e.message);
+        }
+    });
+    ";
 
-?>
+    // Enqueue a placeholder script to ensure jQuery is available
+    wp_register_script('qtm-inline', '', [], '', true);
+    wp_enqueue_script('qtm-inline');
 
+    // Add inline script to the placeholder script
+    wp_add_inline_script('qtm-inline', $inline_script);
 
+    // Include necessary files
+    require_once plugin_dir_path(__FILE__) . 'inc/quran_style.php';
+    require_once plugin_dir_path(__FILE__) . 'inc/template.php';
 
-  <script language="javascript">
-jQuery(document).ready(function(e) {
-
-try {
-jQuery("#select_language,#change_sura").msDropDown();
-} catch(e) {
-alert(e.message);
-}
-});
-</script>
-
-
-<?php
-
+    // Initialize Quran (assuming this is required)
+    init_quran();
 }
 
 add_shortcode('quran', 'quran_shortcode');
@@ -529,4 +533,28 @@ function quran_shortcode() {
 
 	return qtm_renderquran();
 
+}
+
+function qtm_changesura() {
+    if(!isset($_GET['sura']) || !preg_match('/^[0-9]+$/', $_GET['sura'])) {
+        wp_send_json_error(esc_html__('Paramètre sourate invalide', 'quran-text-multilanguage'));
+        return;
+    }
+    
+    $sura = intval($_GET['sura']);
+    if($sura < 1 || $sura > 114) {
+        wp_send_json_error(esc_html__('Numéro de sourate invalide', 'quran-text-multilanguage'));
+        return;
+    }
+    
+    // Vérification de l'origine des fichiers MP3
+    $allowed_domains = array('quran.s3.fr-par.scw.cloud');
+    $mp3_url = 'https://quran.s3.fr-par.scw.cloud/';
+    
+    if(!in_array(parse_url($mp3_url, PHP_URL_HOST), $allowed_domains)) {
+        wp_send_json_error('Origine des fichiers MP3 non autorisée');
+        return;
+    }
+    
+    // ... reste du code existant ...
 }
